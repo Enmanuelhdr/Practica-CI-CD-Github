@@ -16,7 +16,7 @@ async function sendTelegramMessage() {
             `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
             {
                 chat_id: CHAT_ID,
-                text: messageToSend
+                text: DEFAULT_MESSAGE
             }
         );
         console.log('Mensaje enviado:', response.data);
