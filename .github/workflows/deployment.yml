@@ -5,7 +5,6 @@ env:
     VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-    ERROR_MESSAGE: ""
 
 
 on:
@@ -33,10 +32,11 @@ jobs:
         - run: npm ci
         - run: npm test
         - name: Establecer mensaje de error
+          env: 
+            ERROR_MESSAGE: Error en los test
           if: ${{ failure() }}
           run: |
-            echo "ERROR_MESSAGE=Error en los test" >> $GITHUB_ENV
-            node sendTelegramMessage.js
+            node sendTelegramMessage.js "$ERROR_MESSAGE"
 
     
     Deploy-Production:
@@ -58,7 +58,7 @@ jobs:
           if: ${{ failure() }}
           run: |
             echo "ERROR_MESSAGE=Error en el deployment" >> $GITHUB_ENV
-            node sendTelegramMessage.js
+            node sendTelegramMessage.js "$ERROR_MESSAGE"
 
     Enviar-mensaje:
 
