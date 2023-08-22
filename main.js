@@ -14,7 +14,7 @@ document.querySelector('#app').innerHTML = `
     </p>
     <p class="read-the-docs">
       <strong>
-        Enmanuel Heredia & ingresa tu nombre
+        Enmanuel Heredia & Arianny Carvajal
       </strong>
     </p>
   </div>
