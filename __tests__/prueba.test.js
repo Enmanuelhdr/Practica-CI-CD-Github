@@ -35,3 +35,8 @@ describe('TaskManager', () => {
         expect(tasks).toContain('Estudiar para el examen');
     });
 });
+
+test('Suma de dos números', () => {
+
+    expect(sumar(2 + 3)).toBe(5);
+  });
